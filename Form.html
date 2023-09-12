@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STUDENT REGISTRATION FORM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f1f1f1;
+        }
+        .panel {
+            width: 400px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        fieldset {
+            border: none;
+            border-top: 1px solid black;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .radio-inline {
+            margin-right: 20px;
+        }
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="panel">
+            <form action="connection.jsp" method="post">
+                <h1>STUDENT REGISTRATION FORM</h1>
+                <fieldset>
+                    <legend>
+                        <h3>ENTER YOUR DETAILS</h3>
+                    </legend>
+                    <div class="form-group">
+                        <label for="fname">ADMISSION NO*</label>
+                        <input type="text" class="form-control" name="fname" id="fname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">LASTNAME*</label>
+                        <input type="text" class="form-control" name="lname" id="lname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">EMAIL*</label>
+                        <input type="text" class="form-control" name="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rollno">ROLL NO*</label>
+                        <input type="text" class="form-control" name="rollno" id="rollno" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dept">DEPARTMENT*</label>
+                        <input type="text" class="form-control" name="dept" id="dept" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">YEAR*</label>
+                        <input type="text" class="form-control" name="year" id="year" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div>
+                            <label for="male" class="radio-inline">
+                                <input type="radio" name="gender" value="m" id="male">Male</label>
+                            <label for="female" class="radio-inline">
+                                <input type="radio" name="gender" value="f" id="female">Female</label>
+                            <label for="others" class="radio-inline">
+                                <input type="radio" name="gender" value="o" id="others">Others</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">MOBILE*</label>
+                        <input type="text" class="form-control" name="mobile" id="mobile" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">DATE OF BIRTH*</label>
+                        <input type="date" class="form-control" name="dob" id="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">AGE*</label>
+                        <input type="text" class="form-control" name="age" id="age" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">CITY*</label>
+                        <input type="text" class="form-control" name="city" id="city" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="certification">CERTIFICATION*</label>
+                        <input type="text" class="form-control" name="certification" id="certification" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="maths">Maths Marks (out of 100)*</label>
+                        <input type="number" class="form-control" name="maths" id="maths" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="physics">Physics Marks (out of 100)*</label>
+                        <input type="number" class="form-control" name="physics" id="physics" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="chemistry">Chemistry Marks (out of 100)*</label>
+                        <input type="number" class="form-control" name="chemistry" id="chemistry" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="college">Choose Your Domain</label>
+                    <select class="form-control" name="college" id="college" required>
+        <!-- College options will be dynamically populated by JavaScript -->
+                    </select>
+                    </div>
+
+
+
+
+                    <input type="submit" class="btn btn-pr" value="Submit">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="progress-container">
+    <progress id="progress" value="0" max="100"></progress>
+</div>
+
+    <form method="get" action="Display.jsp">
+        <button>SEE USERS</button>
+    </form>
+</body>
+<script>
+    document.getElementById('dob').addEventListener('input', function () {
+        var dobValue = this.value;
+        if (dobValue) {
+            var dobDate = new Date(dobValue);
+            var currentDate = new Date();
+            var age = currentDate.getFullYear() - dobDate.getFullYear();
+            document.getElementById('age').value = age;
+        } else {
+            document.getElementById('age').value = '';
+        }
+    });
+    const form = document.querySelector('form');
+    const progress = document.getElementById('progress');
+    const totalFields = 10; 
+
+    form.addEventListener('input', () => {
+        const filledFields = Array.from(form.elements).filter(element => element.value).length;
+        const percentage = (filledFields / totalFields) * 100;
+        progress.value = percentage;
+    });
+    const mathInput = document.getElementById('maths');
+    const physicsInput = document.getElementById('physics');
+    const chemistryInput = document.getElementById('chemistry');
+    const collegeDropdown = document.getElementById('college');
+
+    mathInput.addEventListener('input', updateCollegeOptions);
+    physicsInput.addEventListener('input', updateCollegeOptions);
+    chemistryInput.addEventListener('input', updateCollegeOptions);
+
+    function updateCollegeOptions() {
+        const mathMarks = parseFloat(mathInput.value);
+        const physicsMarks = parseFloat(physicsInput.value);
+        const chemistryMarks = parseFloat(chemistryInput.value);
+        const cutoff = (mathMarks + physicsMarks / 2 + chemistryMarks / 2);
+
+        collegeDropdown.innerHTML = '';
+
+        if (cutoff > 190) {
+            addCollegeOption('Web Development');
+            addCollegeOption('Cybersecurity');
+            addCollegeOption('SRM IST');
+            addCollegeOption('Cloud Computing');
+            addCollegeOption('Data Science and Big Data');
+            addCollegeOption('Mobile App Development');
+            addCollegeOption('Blockchain Technology');
+            addCollegeOption('Internet of Things ');
+        } else if (cutoff > 180) {
+            addCollegeOption('Cybersecurity');
+            addCollegeOption('SRM IST');
+            addCollegeOption('Cloud Computing');
+            addCollegeOption('Data Science and Big Data');
+            addCollegeOption('Mobile App Development');
+            addCollegeOption('Blockchain Technology');
+            addCollegeOption('Internet of Things ');
+        } else if (cutoff > 175) {
+            addCollegeOption('SRM IST');
+            addCollegeOption('Cloud Computing');
+            addCollegeOption('Data Science and Big Data');
+            addCollegeOption('Mobile App Development');
+            addCollegeOption('Blockchain Technology');
+            addCollegeOption('Internet of Things ');
+        } else if (cutoff > 170) {
+            addCollegeOption('Cloud Computing');
+            addCollegeOption('Data Science and Big Data');
+            addCollegeOption('Mobile App Development');
+            addCollegeOption('Blockchain Technology');
+            addCollegeOption('Internet of Things ');
+        } else if (cutoff > 165) {
+            addCollegeOption('Data Science and Big Data');
+            addCollegeOption('Mobile App Development');
+            addCollegeOption('Blockchain Technology');
+            addCollegeOption('Internet of Things ');
+        } else if (cutoff > 160) {
+            addCollegeOption('Mobile App Development');
+            addCollegeOption('Blockchain Technology');
+            addCollegeOption('Internet of Things ');
+        } else if (cutoff > 155) {
+            addCollegeOption('Blockchain Technology');
+            
+        } else if (cutoff > 150) {
+            addCollegeOption('Internet of Things ');
+        } else {
+            addCollegeOption('Internet of Things ');
+        }
+    }
+
+    function addCollegeOption(collegeName) {
+        const option = document.createElement('option');
+        option.value = collegeName;
+        option.textContent = collegeName;
+        collegeDropdown.appendChild(option);
+    }
+
+    updateCollegeOptions();
+</script>
+
+
+</html>
+
